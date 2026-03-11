@@ -12,14 +12,15 @@ services:
       - .:/app
     depends_on:
       - db
+    restart: unless-stopped
 
   db:
     image: mysql:8
     container_name: mysql_db
-    restart: always
+    restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: django_db
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: satisactual_db
     ports:
       - "3306:3306"
     volumes:
