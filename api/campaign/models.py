@@ -6,7 +6,7 @@ from utils.management.file_rename import upload_to_logo_image,upload_to_third_Pa
 
 
 class MstCampaignTypes(models.Model):
-    cod_campaign_type = models.CharField(max_length=7)
+    cod_campaign_type = models.CharField(max_length=7,null=True,blank=True)
     cod_rec_status = models.CharField(max_length=1, choices=REC_STATUS_CHOICES, default='A')
     txt_campaign_type_desc = models.CharField(max_length=96, null=True, blank=True)
     flg_sales_campaign = models.CharField(max_length=1, choices=YES_NO_CHOICES, default='N')
