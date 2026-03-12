@@ -6,14 +6,13 @@ from utils.management.file_rename import upload_to_logo_image,upload_to_third_Pa
 
 
 class MstCampaignTypes(models.Model):
-    cod_campaign_type = models.CharField(max_length=4)
+    cod_campaign_type = models.CharField(max_length=7)
     cod_rec_status = models.CharField(max_length=1, choices=REC_STATUS_CHOICES, default='A')
     txt_campaign_type_desc = models.CharField(max_length=96, null=True, blank=True)
     flg_sales_campaign = models.CharField(max_length=1, choices=YES_NO_CHOICES, default='N')
     flg_employee_survey = models.CharField(max_length=1, choices=YES_NO_CHOICES, default='N')
     num_min_size_for_reporting = models.SmallIntegerField(default=25)
     flg_dnc_scrub_reqd = models.CharField(max_length=1, choices=YES_NO_CHOICES, default='N')
-
     flg_structured = models.CharField(max_length=1, choices=YES_NO_CHOICES, null=True, blank=True)
     flg_response_reqd = models.CharField(max_length=1, choices=YES_NO_CHOICES, null=True, blank=True)
     flg_targetlist_mandatory = models.CharField(max_length=1, choices=YES_NO_CHOICES, null=True, blank=True)

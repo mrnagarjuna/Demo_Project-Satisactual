@@ -4,21 +4,24 @@ set -e
 echo "Waiting for MySQL to be ready..."
 
 # Wait until MySQL is ready
-until nc -z -v -w30 mysql_db 3306
-do
-  echo "Waiting 1s..."
+until nc -z mysql_db 3306; do
+  echo "MySQL is unavailable - sleeping"
   sleep 1
 done
 
 echo "MySQL started!"
 
-# Run migrations
-python manage.py makemigrations --noinput
+echo "Applying database migrations..."
+
+# Apply migrations automatically
 python manage.py migrate --noinput
 
-# Collect static files (optional for production)
-# python manage.py collectstatic --noinput
+echo "Collecting static files..."
 
-# Start Django server
+# Optional but recommended
+python manage.py collectstatic --noinput || true
+
 echo "Starting Django server..."
+
+# Start Django
 python manage.py runserver 0.0.0.0:8000
