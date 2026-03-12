@@ -6,7 +6,7 @@ from utils.management.file_rename import upload_to_menuoption
 
 
 class MstAddrTypes(models.Model):
-    cod_addr_type = models.CharField(max_length=6,null=True,blank=True)
+    cod_addr_type = models.CharField(max_length=8,null=True,blank=True)
     cod_rec_status = models.CharField(max_length=1, choices=REC_STATUS_CHOICES, default='A')
 
     txt_addr_type_desc = models.CharField(max_length=48, null=True, blank=True)
